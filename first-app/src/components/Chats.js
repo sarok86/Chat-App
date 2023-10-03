@@ -1,4 +1,4 @@
-import React , { useState,useEffect,useContext } from 'react';
+import React , { useState, useEffect , useContext } from 'react';
 import { auth } from '../firebase';
 import { useHistory } from 'react-router-dom';
 import { ChatEngine } from "react-chat-engine";
@@ -44,7 +44,7 @@ const Chats = () => {
         getFile(user.photoURL)
             .then(avatar =>{
                 formdata.append("avatar",avatar,avatar.name)
-                axios.post("https://api.chatengine.io/users/",formdata,{
+                axios.post("https://api.chatengin.io/users/",formdata,{
                     headers:{
                         "private-key" :"97f3691c-e40d-4d65-bfab-d7c95a737fdf"
                     }
@@ -54,8 +54,8 @@ const Chats = () => {
             })
     },[user,history])
 
-    const getFile = async (url) =>{
-        const response = await fetch(url);
+    const getFile = async (rl) =>{
+        const response = await fetch(rl);
         const data = await response.blob();
         return new File ([data], "userPhoto.jpg",{type:"image/jpg"})
     }
